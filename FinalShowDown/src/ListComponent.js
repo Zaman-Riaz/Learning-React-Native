@@ -28,21 +28,21 @@ function List() {
     apiCall();
   }, []);
 
-  const searchFilter = (text)=> {
-     if(text) {
-        const newData = masterData.filter((item) => {
-        console.log(item)
-        const itemData = item.login ? item.login.toUpperCase() : ''.toUpperrrCase();
-        const textData = text.toUpperCase();
-        return itemData.indexOf(textData) > -1;
-        });
-        setData(newData);
-        setSearch(text);
-    }
+  const searchFilter = (text) => { 
+    if(text == ' ' ) { 
+        setData (masterData)
+    } 
     else {
-        setData(masterData);
-        setSearch(text);
+      const newData  = masterData.filter (item => 
+      item.login.toLowerCase().includes(text.toLowerCase()))
+      if( newData.length > 0 ) { 
+          setData(newData) 
+      } 
+      else {
+          setData ( [ {'login': ' No data found '} ] )
+      }
     }
+      setSearch(text) 
   }
 
   const ModalCall = () => {
@@ -100,10 +100,8 @@ function List() {
          style={styles.searchIcon} />
         <TextInput
           placeholder=" Search here"
-          // style={styles.inputStyle}
           value={search}
-          onChangeText={(text) => searchFilter(text)}
-          // onClear={(text) => searchFilter('')} 
+          onChangeText={(text) => searchFilter(text)} 
         />
       </View>
    
@@ -112,7 +110,7 @@ function List() {
       {/* Display data in a list */}
       <ScrollView>
         {
-          data.map((item, id) => {
+          data.map((item, index) => {
             return (
               <TouchableOpacity
                 style={styles.mainContainer}
@@ -133,11 +131,8 @@ function List() {
   );
 }
 
-
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
-    // marginHorizontal: 10,
     borderRadius: 25,
     backgroundColor: '#badfda',
   },
@@ -170,10 +165,8 @@ const styles = StyleSheet.create({
     shadowColor: "#000",
   },
   button: {
-    // flexDirection: 'row',
     borderRadius: 20,
     padding: 20,
-    // elevation: 2,
     width: '60%',
   },
   buttonClose: {
@@ -191,7 +184,6 @@ const styles = StyleSheet.create({
   },
   picture: {
     margin: 5,
-    // marginTop: 15,
     flexDirection: 'row',
     borderRadius: 25,
     height: 50,
@@ -204,19 +196,11 @@ const styles = StyleSheet.create({
     borderWidth: 12,
     borderColor: '#badfda',
     borderRadius: 40,
-    // borderBottomWidth: 0.5,
     marginTop: 4,
-    // paddingBottom: 5,
-},
-inputStyle: {
-    // borderWidth: 2,
-    // borderRadius: 25,
-    // width: '100%',
-   
-},
-searchIcon: {
-    padding: 10
-}
+  },
+  searchIcon: {
+      padding: 15
+  }
 })
 
 

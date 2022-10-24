@@ -67,12 +67,12 @@ export default function ImgCrop() {
       height: 400,
       cropping: true,
     })
-    .then(res => {
-      console.log(res);
-    })
-    .catch((err) => {
-      console.log('Error found while picking image from gallery: ', err);
-    });
+      .then(res => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log('Error found while picking image from Camera: ', err);
+      });
 
   }
 

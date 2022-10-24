@@ -1,5 +1,5 @@
 import React,{ useState } from "react";
-import { ImageBackground, Alert, StyleSheet, View, Text, ScrollView, TextInput, TouchableOpacity, ToastAndroid } from "react-native";
+import { ImageBackground, Alert, StyleSheet, View, Text, ScrollView, TextInput, TouchableOpacity, ToastAndroid, KeyboardAvoidingView } from "react-native";
 
 export default function Signup({navigation}) { 
 
@@ -51,7 +51,7 @@ export default function Signup({navigation}) {
         
       <View style={styles.container}>
     
-      <ScrollView>
+      <KeyboardAvoidingView>
     
       <Text style={styles.heading}>SIGN UP 
       <Text style={{color:"orange", fontWeight: 'bold', fontSize: 17}}> Vendor</Text>
@@ -101,7 +101,7 @@ export default function Signup({navigation}) {
            Sign up </Text>
          </TouchableOpacity>
          
-         </ScrollView>
+         </KeyboardAvoidingView>
        </View>
       </ImageBackground>
       </>
@@ -119,9 +119,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#FAF5EB',
   },
   input: {
+    marginHorizontal: 10,
     borderWidth: 1,
     borderColor: '#28B0D8',
-    width: 350,
+    width: '90%',
     margin: 8,
     marginLeft: 20,
     padding: 10

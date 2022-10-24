@@ -17,9 +17,9 @@ function MyDrawer() {
     return (
         <NavigationContainer>
             <Navigator>
-                <Screen name="ImgPicker" component={ImgPicker} />
                 <Screen name="sign-up-screen" component={Signup} />
                 <Screen name="log-in-screen" component={Login} />
+                <Screen name="ImgPicker" component={ImgPicker} />
                 <Screen name="DateTimePicker" component={DateTimePicker} />
 
             </Navigator>
